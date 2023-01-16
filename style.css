@@ -84,3 +84,9 @@ body {
   .h2Custom{
     text-align: center;
   }
+
+  .ob-container{
+    text-align: center;
+    width:50%;
+    height: 50%;
+  }
