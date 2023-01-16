@@ -9,14 +9,14 @@ body {
   }
   .navbar {
    display: flex; /* use flexbox layout */
-      justify-content: center; 
-    overflow: hidden;
-    background-color: #197be4;
+   justify-content: center; 
+   overflow: hidden;
+   background-color: #197be4;
   }
   .navbar .home-link {
-      font-family: 'Material Symbols Outlined';
-      font-size: 20px;
-      text-decoration: none;
+   font-family: 'Material Symbols Outlined';
+   font-size: 20px;
+   text-decoration: none;
   }
   .navbar a {
     float: left;
@@ -85,8 +85,9 @@ body {
     text-align: center;
   }
 
-  .ob-container{
+  #ob-container{
+    margin: auto;
     text-align: center;
-    width:50%;
-    height: 50%;
+    width:60%;
+    height: 70%;
   }
