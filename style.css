@@ -92,3 +92,9 @@ body {
     width:60%;
     height: 70%;
   }
+
+  #dateTime{
+    color: white;
+    position: absolute;
+    margin-left:80%;
+  }
