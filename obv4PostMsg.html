@@ -27,6 +27,19 @@
         <a href="/main/api.html">PPS API</a>
       </div>
       <h2 class="h2Custom">Online Booking V3/4 using postMessage</h2>
+       <script type="text/javascript">
+        window.addEventListener('message', (message) => {
+          if (message.origin == 'https://ob.rushcliff.com' && message.data == 'iframe-loaded') {
+            console.log('message received');
+           let pageData = {
+              name: 'maskfitting',
+            };
+              
+            let onlineBookingIframe = document.getElementById('ob-container').getElementsByTagName('iframe')[0].contentWindow;
+            onlineBookingIframe.postMessage(pageData, 'https://ob.rushcliff.com');
+          }
+        });
+        </script>
       <div id="ob-container"></div>
       <div class="footer">
               <p class="footer-text">Emir Kadralija</p>
@@ -57,19 +70,7 @@
             })();
             </script>
             
-            <script type="text/javascript">
-        window.addEventListener('message', (message) => {
-          if (message.origin == 'https://ob.rushcliff.com' && message.data == 'iframe-loaded') {
-            console.log('message received');
-           let pageData = {
-              name: 'change',
-            };
-              
-            let onlineBookingIframe = document.getElementById('ob-container').getElementsByTagName('iframe')[0].contentWindow;
-            onlineBookingIframe.postMessage(pageData, 'https://ob.rushcliff.com');
-          }
-        });
-        </script>
+         
             
         </footer>
 </body>
