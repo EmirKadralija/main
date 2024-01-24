@@ -34,7 +34,7 @@
 		  window.addEventListener("message", (message) => {
   			if (message.origin == obUrl && message.data == "iframe-loaded") {
     			let pageData = {
-      				name: "clifton",
+      				name: "maskfit",
     			};
     			let onlineBookingIframe = document.getElementById("ob-container").getElementsByTagName("iframe")				[0].contentWindow;
     			onlineBookingIframe.postMessage(pageData, obUrl);
