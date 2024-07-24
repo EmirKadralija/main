@@ -86,13 +86,6 @@ body {
     text-align: center;
   }
 
-  #ob-container{
-    margin: auto;
-    text-align: center;
-    width:60%;
-    height: 70%;
-  }
-
   #dateTime{
     color: white;
     position: absolute;
