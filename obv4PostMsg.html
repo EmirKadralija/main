@@ -27,20 +27,33 @@
         <a href="/main/api.html">PPS API</a>
       </div>
       <h2 class="h2Custom">Online Booking V3/4 using postMessage</h2>
-    					 <script>
-		  //Code for the page hosting the OB instance
-		  const obUrl = "https://ob.rushcliff.com";
+    					<script type="text/javascript">
+  const obUrl = "https://ob.rushcliff.com";
+  
+  window.addEventListener("message", (message) => {
+    // Log message origin and data for debugging
+    console.log("Received message:", message);
+    console.log("Message origin:", message.origin);
+    console.log("Message data:", message.data);
 
-		  window.addEventListener("message", (message) => {
-  			if (message.origin == obUrl && message.data == "iframe-loaded") {
-    			let pageData = {
-      				name: "maskfit",
-    			};
-    			let onlineBookingIframe = document.getElementById("ob-container").getElementsByTagName("iframe")				[0].contentWindow;
-    			onlineBookingIframe.postMessage(pageData, obUrl);
-  			}
-		  });
-	  </script>
+    if (message.origin === obUrl && message.data === "iframe-loaded") {
+      // Log iframe element for debugging
+      const iframe = document.getElementById("ob-container").querySelector("iframe");
+      console.log("Found iframe:", iframe);
+
+      if (iframe) {
+        const onlineBookingIframe = iframe.contentWindow;
+
+        const pageData = { name: "maskfit" };
+        onlineBookingIframe.postMessage(pageData, obUrl);
+        console.log("Posted message to iframe:", pageData);
+      } else {
+        console.error("Iframe not found.");
+      }
+    }
+  });
+</script>
+
       <div id="ob-container"></div>
       <div class="footer">
               <p class="footer-text">Emir Kadralija</p>
