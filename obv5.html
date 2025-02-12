@@ -31,13 +31,33 @@
       <div class="footer">
               <p class="footer-text">Emir Kadralija</p>
           </div>
+    <script>
+//Code for the page hosting the OB instance
+const obUrl = "https://new-ob.rushcliff.com";
+//Sends a message to the OB frame to indicate which appointment types to load for this page
+window.addEventListener("message", (message) => {
+  if (message.origin == obUrl && message.data == "iframe-loaded") {
+    let pageData = {
+      name: "Testing",
+    };
+    let onlineBookingIframe = document.getElementById("ob-container").getElementsByTagName("iframe")[0].contentWindow;
+    onlineBookingIframe.postMessage(pageData, obUrl);
+  }
+});
+
+
+        
+    </script>
+    
+
+    
           <footer>
             <script type="text/javascript">
             function ppsOnlineBooking() {
                 new OnlineBooking({
                     container: "ob-container", 
                     id: 222222,
-                    event_booking: "on"
+                    
                 
                 });
             }
