@@ -12,10 +12,17 @@ body {
     background-color: #333;
     overflow: hidden;
     padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
 }
 
 .navbar a, .navbar .dropbtn {
-    float: left;
     display: block;
     color: #f2f2f2;
     text-align: center;
@@ -29,8 +36,7 @@ body {
 }
 
 .dropdown {
-    float: left;
-    overflow: hidden;
+    position: relative;
 }
 
 .dropdown .dropbtn {
@@ -104,6 +110,6 @@ body {
 
 #dateTime {
     color: white;
-    float: right;
+    margin-left: auto;
     margin-right: 20px;
 }
