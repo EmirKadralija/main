@@ -1,15 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #f4f4f4;
 }
 
 .navbar {
     background-color: #333;
     overflow: hidden;
+    padding: 10px 0;
 }
 
 .navbar a, .navbar .dropbtn {
@@ -69,6 +71,7 @@ body {
 
 .container {
     padding: 20px;
+    text-align: center;
 }
 
 .footer {
@@ -89,10 +92,31 @@ body {
 
 .h2Custom {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #555;
 }
 
 #dateTime {
     color: white;
-    position: absolute;
-    margin-left: 80%;
+    float: right;
+    margin-right: 20px;
 }
