@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emir Kadralija</title>
+    <link rel="stylesheet" href="/main/style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <div class="navbar">
+        <a href="/main/index.html" class="home-link">
+              <span class="material-icons-outlined">home</span>
+        </a>
+        <div class="dropdown">
+          <button class="dropbtn">PPS Online Booking 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="/main/obv4.html">OLB V3/4</a>
+            <a href="/main/obv4PostMsg.html">OLB V3/4 postMessage()</a>
+            <a href="/main/obv5">OLB V5</a>
+          </div>
+        </div> 
+        <a href="/main/api.html">PPS API</a>
+      </div>
+      <h2 class="h2Custom">Online Booking V3/4</h2>
+      <div id="ob-container"></div>
+      <div class="footer">
+              <p class="footer-text">Emir Kadralija</p>
+          </div>
+          <footer>
+            <script type="text/javascript">
+                function ppsOnlineBooking() {
+                    new OnlineBooking({
+                        container: "ob-container", 
+                        id: 222222,
+                        
+                    });
+                }
+                (function() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "https://ob.rushcliff.com/status-check", true);
+                    xhr.onreadystatechange = function() {
+                        if(xhr.readyState == 4) {
+                            if(xhr.status == 200 && xhr.responseText == "live") {
+                                var script = document.createElement("script");
+                                script.src = "https://ob.rushcliff.com/js/obv4.js";
+                                document.head.appendChild(script);
+                            } else {
+                                document.getElementById("ob-container").innerHTML = "<p>Our online booking service is currently unavailable. Please call, email or try again later.</p>";
+                            }
+                        }
+                    }
+                    xhr.send();
+                })();
+                </script>
+          </footer>
+</body>
+</html>
