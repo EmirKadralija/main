@@ -8,29 +8,75 @@
     <link rel="stylesheet" href="/main/style.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <script src="/main/script.js"></script>   
-  </head>
-    
+    <script src="/main/script.js" defer></script>
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            transition: 0.4s;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
 <body>
     <div class="navbar">
         <a href="/main/index.html" class="home-link">
-              <span class="material-icons-outlined">home</span>
+            <span class="material-icons-outlined">home</span>
         </a>
         <div class="dropdown">
-          <button class="dropbtn">PPS Online Booking 
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content">
-            <a href="/main/obv4.html">OLB V3/4</a>
-            <a href="/main/obv4PostMsg.html">OLB V3/4 postMessage()</a>
-            <a href="/main/obv5">OLB V5</a>
-          </div>
+            <button class="dropbtn">PPS Online Booking 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/main/obv4.html">OLB V3/4</a>
+                <a href="/main/obv4PostMsg.html">OLB V3/4 postMessage()</a>
+                <a href="/main/obv5">OLB V5</a>
+            </div>
         </div> 
         <a href="/main/api.html">PPS API</a>
-      </div>
-      <h2 id="jsOutput">Test</h2>
-      <div class="footer">
-              <p class="footer-text">Emir Kadralija</p>
-          </div>
+    </div>
+
+    <h2 id="jsOutput">Test</h2>
+
+    <button class="accordion">Section 1</button>
+    <div class="accordion-content">
+        <p>Content for section 1.</p>
+    </div>
+
+    <button class="accordion">Section 2</button>
+    <div class="accordion-content">
+        <p>Content for section 2.</p>
+    </div>
+
+    <div class="footer">
+        <p class="footer-text">Emir Kadralija</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('.accordion').forEach(button => {
+            button.addEventListener('click', function () {
+                this.classList.toggle('active');
+                let content = this.nextElementSibling;
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                } else {
+                    content.style.display = 'block';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
