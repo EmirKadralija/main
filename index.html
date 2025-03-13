@@ -37,7 +37,7 @@
             <span class="material-icons-outlined">home</span>
         </a>
         <div class="dropdown">
-            <button class="dropbtn">PPS Online Booking 
+            <button class="dropbtn" id="ppsBookingMenu">PPS Online Booking 
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
@@ -61,6 +61,8 @@
         <p>Content for section 2.</p>
     </div>
 
+    <div id="ob-container"></div>
+
     <div class="footer">
         <p class="footer-text">Emir Kadralija</p>
     </div>
@@ -76,6 +78,31 @@
                     content.style.display = 'block';
                 }
             });
+        });
+
+        document.getElementById('ppsBookingMenu').addEventListener('click', function () {
+            function ppsOnlineBooking() {
+                new OnlineBooking({
+                    container: "ob-container", id: 222222
+                });
+            }
+            (function() {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "https://ob.rushcliff.com/status-check", true);
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState == 4) {
+                        if(xhr.status == 200 && xhr.responseText == "live") {
+                            var script = document.createElement("script");
+                            script.src = "https://ob.rushcliff.com/js/obv4.js";
+                            script.onload = ppsOnlineBooking;
+                            document.head.appendChild(script);
+                        } else {
+                            document.getElementById("ob-container").innerHTML = "<p>Our online booking service is currently unavailable. Please call, email or try again later.</p>";
+                        }
+                    }
+                }
+                xhr.send();
+            })();
         });
     </script>
 </body>
