@@ -28,37 +28,11 @@
         <a href="/main/api.html">PPS API</a>
     </div>
     <div id='mainBodyContainer'>
-<div id="ob-container"></div>
+
         
     </div>
     <div class="footer">
         <p class="footer-text">Emir Kadralija</p>
-     <script>
-            function ppsOnlineBooking() {
-                new OnlineBooking({
-                    container: "ob-container", 
-                    id: 222222
-                });
-            }
-            (function() {
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "https://ob.rushcliff.com/status-check", true);
-                xhr.onreadystatechange = function() {
-                    if(xhr.readyState == 4) {
-                        if(xhr.status == 200 && xhr.responseText == "live") {
-                            var script = document.createElement("script");
-                            script.src = "https://ob.rushcliff.com/js/obv4.js";
-                            script.onload = ppsOnlineBooking;
-                            document.head.appendChild(script);
-                        } else {
-                            document.getElementById("ob-container").innerHTML = "<p>Our online booking service is currently unavailable. Please call, email or try again later.</p>";
-                        }
-                    }
-                }
-                xhr.send();
-            })();
-      
-    </script>
            </div>
 </body>
 </html>
