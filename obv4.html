@@ -33,10 +33,22 @@
               <p class="footer-text">Emir Kadralija</p>
           </div>
 <script>
-const obUrl="https://ob.rushcliff.com";
-    window.addEventListener("message",(message)=>{if(message.origin==obUrl&&message.data=="iframe-loaded"){let pageData={name:"PhysioPage",};let onlineBookingIframe=document.getElementById("ob-container").getElementsByTagName("iframe")[0].contentWindow;onlineBookingIframe.postMessage(pageData,obUrl)}})
-    
+const obUrl = "https://ob.rushcliff.com";
+
+window.addEventListener("message", (message) => {
+    if (message.origin === obUrl && message.data === "iframe-loaded") {
+        let pageData1 = { name: "PhysioPage" };
+        let pageData2 = { name: "PodiatryPage" }; // Adjust as needed for second iframe
+
+        let iframe1 = document.querySelector("#ob-container");
+        let iframe2 = document.querySelector("#ob-container-2");
+
+        if (iframe1) iframe1.contentWindow.postMessage(pageData1, obUrl);
+        if (iframe2) iframe2.contentWindow.postMessage(pageData2, obUrl);
+    }
+});
 </script>
+
     
           <footer>
             <script type="text/javascript">
