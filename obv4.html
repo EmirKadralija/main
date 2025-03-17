@@ -27,7 +27,8 @@
         <a href="/main/api.html">PPS API</a>
       </div>
       <h2 class="h2Custom">Online Booking V3/4</h2>
-      <div id="ob-container"></div>
+      <div id="ob-container"></div> <br>
+      <div id="ob-container-2"></div>
       <div class="footer">
               <p class="footer-text">Emir Kadralija</p>
           </div>
@@ -57,6 +58,32 @@ const obUrl="https://ob.rushcliff.com";
                                 document.head.appendChild(script);
                             } else {
                                 document.getElementById("ob-container").innerHTML = "<p>Our online booking service is currently unavailable. Please call, email or try again later.</p>";
+                            }
+                        }
+                    }
+                    xhr.send();
+                })();
+                </script>
+
+               <script type="text/javascript">
+                function ppsOnlineBooking() {
+                    new OnlineBooking({
+                        container: "ob-container-2", 
+                        id: 222222,
+                        
+                    });
+                }
+                (function() {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("GET", "https://ob.rushcliff.com/status-check", true);
+                    xhr.onreadystatechange = function() {
+                        if(xhr.readyState == 4) {
+                            if(xhr.status == 200 && xhr.responseText == "live") {
+                                var script = document.createElement("script");
+                                script.src = "https://ob.rushcliff.com/js/obv4.js";
+                                document.head.appendChild(script);
+                            } else {
+                                document.getElementById("ob-container-2").innerHTML = "<p>Our online booking service is currently unavailable. Please call, email or try again later.</p>";
                             }
                         }
                     }
