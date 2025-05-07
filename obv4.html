@@ -32,21 +32,22 @@
 	
 <script type="text/javascript">
 window.addEventListener('message', (message) => {
-  if (message.origin == 'https://ob.rushcliff.com' && message.data == 'iframe-loaded') {
-    console.log('message received');
-    let pageData = {
-      name: 'change',
-    };
+  // Handle iframe-loaded message
+  if (message.origin === 'https://ob.rushcliff.com' && message.data === 'iframe-loaded') {
+    console.log('iframe loaded');
+    let pageData = { name: 'change' };
     let onlineBookingIframe = document.getElementById('ob-container').getElementsByTagName('iframe')[0].contentWindow;
     onlineBookingIframe.postMessage(pageData, 'https://ob.rushcliff.com');
   }
 
-  // Handle child message to open tab
-  if (message.origin == 'https://emirkadralija.github.io' && message.data?.action === 'open-tab') {
+  // Handle message from child iframe to open a new tab
+  if (message.origin === 'https://emirkadralija.github.io' && message.data?.action === 'open-tab') {
+    console.log('Opening new tab to:', message.data.url);
     window.open(message.data.url, '_blank');
   }
 });
 </script>
+
 
 
 	
