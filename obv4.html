@@ -33,21 +33,24 @@
 
 <script>
 window.addEventListener('message', (message) => {
-  console.log('Parent received message:', message); // ✅ Add this to debug
+  console.log('Parent received message:', message);
 
-  // Step 1: Respond to iframe load (optional)
+  // Handle iframe-loaded event
   if (message.origin === 'https://ob.rushcliff.com' && message.data === 'iframe-loaded') {
     const iframe = document.getElementById('ob-container').getElementsByTagName('iframe')[0].contentWindow;
     iframe.postMessage({ name: 'change' }, 'https://ob.rushcliff.com');
+    return;
   }
 
-  // Step 2: Handle redirect from iframe
-  if (message.origin === 'https://emirkadralija.github.io' && message.data?.action === 'open-tab') {
+  // ✅ Handle redirect request from iframe
+  if (message.origin === 'https://ob.rushcliff.com' && message.data?.action === 'open-tab') {
     console.log('✅ Redirecting to:', message.data.url);
     window.location.href = message.data.url;
-  } else {
-    console.warn('⚠️ Message ignored. Origin:', message.origin, 'Data:', message.data);
+    return;
   }
+
+  // If not matched
+  console.warn('⚠️ Message ignored. Origin:', message.origin, 'Data:', message.data);
 });
 </script>
 
