@@ -30,23 +30,44 @@
     <div id="ob-container"></div> <br>
 <footer>
 	
-<script type="text/javascript">
-window.addEventListener('message', (message) => {
-  // Handle iframe-loaded message
-  if (message.origin === 'https://ob.rushcliff.com' && message.data === 'iframe-loaded') {
-    console.log('iframe loaded');
-    let pageData = { name: 'change' };
-    let onlineBookingIframe = document.getElementById('ob-container').getElementsByTagName('iframe')[0].contentWindow;
-    onlineBookingIframe.postMessage(pageData, 'https://ob.rushcliff.com');
-  }
+<script>
+window.onload = () => {
+  // Notify parent that iframe has loaded
+  window.parent.postMessage('iframe-loaded', 'https://emirkadralija.github.io');
 
-  // Handle message from child iframe to open a new tab
-  if (message.origin === 'https://emirkadralija.github.io' && message.data?.action === 'open-tab') {
-    console.log('Opening new tab to:', message.data.url);
-    window.open(message.data.url, '_blank');
-  }
-});
+  // Listen for message from parent
+  window.addEventListener('message', (message) => {
+    if (message.origin === 'https://emirkadralija.github.io' && message.data.name === 'change') {
+      const heading = document.getElementById('app_heading');
+      if (heading) {
+        heading.innerHTML = 'This heading has changed because I got a message from the parent website!';
+      }
+    }
+  });
+
+  // Poll for the confirmation message
+  const pollForConfirmation = setInterval(() => {
+    const confirmHeading = document.getElementById('confirm-heading');
+    if (confirmHeading) {
+      const headingText = confirmHeading.textContent.trim();
+      if (headingText === 'Your appointment has been booked!') {
+        clearInterval(pollForConfirmation);
+        console.log('Booking confirmed, sending message to parent');
+
+        // Send redirect request to parent
+        window.parent.postMessage(
+          {
+            action: 'open-tab', // or "redirect"
+            url: 'https://yourdomain.com/appointment-confirmed' // 🔁 Set your real redirect URL here
+          },
+          'https://emirkadralija.github.io'
+        );
+      }
+    }
+  }, 500); // Check every 0.5 seconds
+};
 </script>
+
 
 
 
