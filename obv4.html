@@ -29,40 +29,7 @@
     <h2 class="h2Custom">Online Booking V3/4</h2>
     <div id="ob-container"></div> <br>
 <footer>
-	
-
-
-<script>
-window.addEventListener('message', (message) => {
-  console.log('Parent received message:', message);
-
-  // Handle iframe-loaded event
-  if (message.origin === 'https://ob.rushcliff.com' && message.data === 'iframe-loaded') {
-    const iframe = document.getElementById('ob-container').getElementsByTagName('iframe')[0].contentWindow;
-    iframe.postMessage({ name: 'change' }, 'https://ob.rushcliff.com');
-    return;
-  }
-
-  // ✅ Handle redirect request from iframe with delay
-  if (message.origin === 'https://ob.rushcliff.com' && message.data?.action === 'open-tab') {
-    console.log('✅ Redirecting to:', message.data.url, 'in 2 seconds...');
-    setTimeout(() => {
-      window.location.href = message.data.url;
-    }, 2000); // 2000 milliseconds = 2 seconds
-    return;
-  }
-
-  // If not matched
-  console.warn('⚠️ Message ignored. Origin:', message.origin, 'Data:', message.data);
-});
-</script>
-
-
-
-
-
-	
-   <script type="text/javascript">
+	 <script type="text/javascript">
 	function ppsOnlineBooking() {
 		new OnlineBooking({
 			container: "ob-container", id: 222222
