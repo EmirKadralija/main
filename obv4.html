@@ -53,9 +53,10 @@ window.addEventListener('message', (message) => {
   }
 
   // If not matched
-  console.warn('⚠️ Message ignored. Origin:', message
-
+  console.warn('⚠️ Message ignored. Origin:', message.origin, 'Data:', message.data);
+});
 </script>
+
 
 
 
