@@ -35,24 +35,31 @@
 window.addEventListener('message', (message) => {
   console.log('Parent received message:', message);
 
-  // Handle iframe-loaded event
+  // Respond to iframe loaded
   if (message.origin === 'https://ob.rushcliff.com' && message.data === 'iframe-loaded') {
     const iframe = document.getElementById('ob-container').getElementsByTagName('iframe')[0].contentWindow;
     iframe.postMessage({ name: 'change' }, 'https://ob.rushcliff.com');
     return;
   }
 
-  // ✅ Handle redirect request from iframe
+  // 🔁 Try opening a new tab
   if (message.origin === 'https://ob.rushcliff.com' && message.data?.action === 'open-tab') {
-    console.log('✅ Redirecting to:', message.data.url);
-    window.location.href = message.data.url;
+    console.log('✅ Attempting to open new tab to:', message.data.url);
+    const newTab = window.open(message.data.url, '_blank');
+
+    // If blocked, log it
+    if (!newTab) {
+      console.warn('⚠️ Popup blocked. Consider fallback to redirect.');
+    }
+
     return;
   }
 
-  // If not matched
+  // Fallback log
   console.warn('⚠️ Message ignored. Origin:', message.origin, 'Data:', message.data);
 });
 </script>
+
 
 
 
