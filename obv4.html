@@ -33,20 +33,23 @@
 
 <script>
 window.addEventListener('message', (message) => {
-  // Step 1: Respond when iframe notifies it's ready
+  console.log('Parent received message:', message); // ✅ Add this to debug
+
+  // Step 1: Respond to iframe load (optional)
   if (message.origin === 'https://ob.rushcliff.com' && message.data === 'iframe-loaded') {
     const iframe = document.getElementById('ob-container').getElementsByTagName('iframe')[0].contentWindow;
     iframe.postMessage({ name: 'change' }, 'https://ob.rushcliff.com');
   }
 
-  // Step 2: Redirect when child confirms booking
+  // Step 2: Handle redirect from iframe
   if (message.origin === 'https://emirkadralija.github.io' && message.data?.action === 'open-tab') {
-    console.log('Redirecting to:', message.data.url);
-    window.location.href = message.data.url; // ✅ Redirect the parent page
+    console.log('✅ Redirecting to:', message.data.url);
+    window.location.href = message.data.url;
+  } else {
+    console.warn('⚠️ Message ignored. Origin:', message.origin, 'Data:', message.data);
   }
 });
 </script>
-
 
 
 
