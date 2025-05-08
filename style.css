@@ -157,6 +157,10 @@ body {
     margin: 0;
 }
 
+.h2Custom {
+  text-align: center;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 600px) {
     .tiles-container {
