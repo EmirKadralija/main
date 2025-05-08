@@ -165,7 +165,8 @@ body {
 }
 
 /* Online Booking Container Styling */
-#ob-container {
+#ob-container,
+#obcontainer {
     width: 80%;
     margin: 0 auto;
     padding: 20px;
