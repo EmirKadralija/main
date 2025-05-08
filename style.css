@@ -158,7 +158,18 @@ body {
 }
 
 .h2Custom {
-  text-align: center;
+    text-align: center;
+    color: #197be4;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Online Booking Container Styling */
+#ob-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 70px; /* Add space for footer */
 }
 
 /* Responsive adjustments */
@@ -170,5 +181,10 @@ body {
     
     .tile {
         width: 70%;
+    }
+    
+    #ob-container {
+        width: 90%; /* Wider on small screens */
+        padding: 10px;
     }
 }
