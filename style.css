@@ -122,21 +122,37 @@ body {
 }
 
 .tile {
-    display: inline-block;
+    display: inline-flex; /* Changed to inline-flex */
+    justify-content: center;
+    align-items: center;
     background-color: #f4f4f4;
     color: #333;
     text-decoration: none;
-    padding: 20px 30px;
+    padding: 20px 15px; /* Reduced horizontal padding */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 1.2em;
     transition: transform 0.2s, box-shadow 0.2s;
-    min-width: 120px;
+    width: 120px; /* Fixed width */
+    height: 30px; /* Fixed height */
+    text-align: center;
 }
 
 .tile:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Add this to your style.css file */
+.tile-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tile-column .tile {
+    margin: 0;
+    width: 120px; /* Ensure consistent width */
 }
 
 /* Footer Styling */
