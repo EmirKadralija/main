@@ -122,20 +122,23 @@ body {
 }
 
 .tile {
-    display: inline-flex; /* Changed to inline-flex */
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
     color: #333;
     text-decoration: none;
-    padding: 20px 15px; /* Reduced horizontal padding */
+    padding: 20px 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 1.2em;
     transition: transform 0.2s, box-shadow 0.2s;
-    width: 120px; /* Fixed width */
-    height: 30px; /* Fixed height */
+    min-width: 120px; /* Changed from width to min-width */
+    height: auto; /* Changed from fixed height to auto */
+    min-height: 30px; /* Minimum height */
     text-align: center;
+    white-space: normal; /* Allow text to wrap */
+    max-width: 250px; /* Set a maximum width */
 }
 
 .tile:hover {
@@ -153,6 +156,12 @@ body {
 .tile-column .tile {
     margin: 0;
     width: 120px; /* Ensure consistent width */
+}
+
+.holding-tile {
+    width: auto;
+    padding: 20px 25px;
+    font-size: 1em; /* Slightly smaller font size */
 }
 
 /* Footer Styling */
