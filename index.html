@@ -52,7 +52,27 @@
         </div>
     </div>
     <div class="footer">
-        <p class="footer-text"></p>
+        <p id="datetime" class="footer-text"></p>
     </div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('datetime').textContent = now.toLocaleDateString('en-GB', options);
+            setTimeout(updateDateTime, 1000); // Update every second
+        }
+        
+        // Run the function when the page loads
+        window.onload = updateDateTime;
+    </script>
 </body>
 </html>
